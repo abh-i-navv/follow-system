@@ -36,6 +36,8 @@ func main() {
 	})
 
 	r.POST("/follow", handler.FollowUser)
+	r.DELETE("/follow", handler.UnfollowUser)
+	r.GET("/users/:id/followers", handler.GetFollower)
 
 	log.Printf("Server running on %v", cfg.Port)
 

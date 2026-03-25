@@ -33,3 +33,22 @@ func (s *FollowService) FollowUser(
 		idempotencyKey,
 	)
 }
+
+func (s *FollowService) UnfollowUser(
+	ctx context.Context,
+	followerID,
+	targetID uuid.UUID,
+) error {
+	return s.Repo.UnfollowUser(
+		ctx,
+		followerID,
+		targetID,
+	)
+}
+
+func (s *FollowService) GetFollower(
+	ctx context.Context,
+	userID uuid.UUID,
+) ([]uuid.UUID, error) {
+	return s.Repo.GetFollower(ctx, userID)
+}
